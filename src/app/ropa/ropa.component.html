@@ -1,0 +1,14 @@
+<h2>{{title}}</h2>
+<span>{{fecha | date:'short'}}</span>
+<br><br>
+<span>Conversor {{5 | conversor: 7}}</span>
+<br><br>
+<input type="text" [(ngModel)]="prenda"/>
+<button (click)="addPrenda(prenda)">Guardar</button>
+
+<ul>
+    <li *ngFor="let prenda of listaPrendas; let i = index;">
+        {{prenda}} <button (click)="deletePrenda(i)">Eliminar</button>
+        <hr>
+    </li>
+</ul>

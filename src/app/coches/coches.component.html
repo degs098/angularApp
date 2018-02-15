@@ -1,0 +1,54 @@
+<h2>{{title}}</h2>
+
+<form #formCoche="ngForm" (ngSubmit)="onSubmit()">
+    <label>Nombre: </label>
+    <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="coche.nombre" required>
+    <span *ngIf="nombre.touched && !nombre.valid">Nombre incorrecto</span>
+    <br><br>
+    
+    <label>Modelo: </label>
+    <input type="text" name="modelo" #modelo="ngModel" [(ngModel)]="coche.modelo" required
+        pattern="[0-9]+">    
+    <span *ngIf="modelo.touched && !modelo.valid">Modelo incorrecto</span>
+    <br><br>    
+    <label>Color: </label>
+    <input type="text" name="color" #color="ngModel" [(ngModel)]="coche.color" required
+        pattern="[a-zA-Z#]+">
+    <span *ngIf="color.touched && !color.valid">Color incorrecto</span>
+    <br><br>
+    <input type="submit" value="Guardar" [disabled]="!formCoche.form.valid">
+</form>
+
+<div>
+    <h3>Lista de coches</h3>
+    <table>
+        <thead>
+            <th>Nombre</th>
+            <th>Modelo</th>
+            <th>Color</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let coche of listCoches">
+                <td>{{coche.nombre}}</td>
+                <td>{{coche.modelo}}</td>
+                <td>{{coche.color}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<div>
+    <h3>Lista de articulos</h3>
+    <table>
+        <thead>
+            <th>Titulo</th>
+            <th>Cuerpo</th>            
+        </thead>
+        <tbody>
+            <tr *ngFor="let articulo of listArticulos">
+                <td>{{articulo.title}}</td>
+                <td>{{articulo.body}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
